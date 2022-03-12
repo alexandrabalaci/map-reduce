@@ -1,0 +1,15 @@
+Balaci Alexandra 336CC
+
+Pentru rezolvarea cerintei am folosit clasa ExecutorService pentru a porni si
+opri executia threadurilor. Am citit datele de la input si am creat pool-ul de taskuri de tip MapTask ce vor fi apoi pornite de catre comanda invokeAll (ce urmeaza sa astepte finalizarea tuturor taskurilor inainte de a avea acces la rezultat).
+
+Am pornit taskurile de tip Map pentru procesarea primei etape. Odata asigurata citirea si impartirea corecta a fragmentelor (nu incep si nu se termina in mijlocul cuvintelor), construim dictionarul si lista cu cele mai lungi cuvinte reprezentative fiecarui fragment. Folosim clasa MapClass pentru a returna obiecte de tip MapClass prin care returnam rezultatul taskurilor Executor (sub forma unor obiecte de tip Future, prin apelarea future.get). 
+
+Analog pentru pornirea si crearea taskurilor pentru etapa Reduce.
+
+Pentru a doua parte, grupam intai toate rezultatele partiale obtinute anterior dupa numele documentului si trimitem listele catre ReduceTask pentru a fi combinate si a fi format dictionarul final, si respectiv lista finala cu cele mai lungi cuvinte din fiecare document, urmand sa fie calculat apoi rangul documentului dupa formula specificata in enunt.
+
+Se returneaza rezultatele sub forma unor obiecte de tip Future, asemenea etapei de Map, si se opreste executorul.
+
+Se scrie in fisierul de output conform cerintei din enunt.
+
